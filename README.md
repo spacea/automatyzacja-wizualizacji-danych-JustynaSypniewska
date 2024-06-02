@@ -11,15 +11,15 @@ Projekt ten to interaktywna tablica rozdzielcza stworzona w Shiny, która przeds
 Wideo prezentujące możliwości projektu na OneDrive: [Projekt Dashboard Pokemon](https://uam-my.sharepoint.com/:v:/r/personal/jussyp1_st_amu_edu_pl/Documents/ProjektDashboard/2024-06-02%2002-44-45.mkv?csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=EWBb8v)
 
 ## Funkcje 
-- **Średnie Wartości** - prezentacja średnich wartości HP, Ataku i Obrony Pokemonów w formie intuicyjnych wskaźników
-- **Najczęstszy Typ** - identyfikacja i prezentacja najczęściej występującego typu Pokemona
-- **Wizualizacja Typów** - wykres kołowy przedstawiający udział poszczególnych typów Pokemonów
-- **Porównanie Ataku i Obrony** - wykres słupkowy porównujący średnie wartości ataku i obrony dla różnych typów Pokemonów
-- **Mapa Ciepła Typów** - mapa ciepła przedstawiająca kombinacje typów Pokemonów
-- **Rozkład HP** - wykres pudełkowy pokazujący rozkład wartości HP w zależności od typu Pokemona
+- **Średnie wartości** - prezentacja średnich wartości HP, Ataku i Obrony Pokemonów w formie intuicyjnych wskaźników
+- **Najczęstszy typ** - identyfikacja i prezentacja najczęściej występującego typu Pokemona
+- **Wizualizacja typów** - wykres kołowy przedstawiający udział poszczególnych typów Pokemonów
+- **Porównanie ataku i obrony** - wykres słupkowy porównujący średnie wartości ataku i obrony dla różnych typów Pokemonów
+- **Heatboard typów** - heatboard przedstawiający kombinacje typów Pokemonów
+- **Rozkład punktów życia** - wykres pudełkowy pokazujący rozkład wartości HP w zależności od typu Pokemona
 
 ## Pakiety
-- **Shiny** - budowanie interaktywnych aplikacji webowych w R
+- **shiny** - budowanie interaktywnych aplikacji webowych w R
 - **shinydashboard** - tworzenie zaawansowanych tablic rozdzielczych w Shiny
 - **ggplot2** - tworzenie wykresów i wizualizacji danych
 - **dplyr** - manipulacja danymi
