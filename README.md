@@ -3,7 +3,7 @@
 
 ## Opis Projektu
 Projekt ten to interaktywna tablica rozdzielcza stworzona w Shiny, która przedstawia różne wizualizacje i statystyki dotyczące Pokemonów. Główne funkcje projektu obejmują:
-- Wyświetlanie średnich wartości HP, Ataku i Obrony Pokemonów
+- Wyświetlanie średnich wartości punktów życia, ataku i obrony Pokemonów
 - Identyfikacja najczęściej występującego typu Pokemona
 - Wizualizacje typu Pokemonów, porównanie średnich wartości ataku i obrony, oraz rozkład HP
 
