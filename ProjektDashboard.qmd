@@ -1,0 +1,188 @@
+---
+title: "Pokemon Dashboard"
+author: "Justyna Sypniewska"
+format: html
+editor: visual
+---
+
+## Pokemon Dashboard
+
+Instalacja i załadowanie potrzebnych pakietów:
+
+```{r}
+#install.packages("shiny")
+#install.packages("shinydashboard")
+#install.packages("ggplot2")
+#install.packages("dplyr")
+#install.packages("plotly")
+#install.packages("readr")
+
+library(shiny)
+library(shinydashboard)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(readr)
+```
+
+UI:
+
+```{r}
+ui = dashboardPage(
+  dashboardHeader(title = "Pokemon Dashboard"),
+  dashboardSidebar(disable = TRUE),
+  dashboardBody(
+    tags$head(
+      tags$style(HTML("
+        .skin-blue .main-header .logo {
+          background-color: #FF0000;
+        }
+        .skin-blue .main-header .logo:hover {
+          background-color: #FF4500;
+        }
+        .skin-blue .main-header .navbar {
+          background-color: #FF0000;
+        }
+        .skin-blue .main-sidebar {
+          background-color: #FF0000;
+        }
+        .skin-blue .main-sidebar .sidebar .sidebar-menu .active a {
+          background-color: #FF4500;
+        }
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a {
+          background-color: #FF0000;
+          color: #FFFFFF;
+        }
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover {
+          background-color: #FF4500;
+        }
+        .skin-blue .main-header .navbar .sidebar-toggle {
+          background-color: #FF0000;
+          color: #FFFFFF;
+        }
+        .skin-blue .main-header .navbar .sidebar-toggle:hover {
+          background-color: #FF4500;
+        }
+        .content-wrapper, .right-side {
+          background-color: #FFFFE0;
+        }
+        .box.box-solid.box-primary>.box-header {
+          color:#fff;
+          background:#FF0000;
+        }
+        .box.box-solid.box-primary {
+          border-bottom-color:#FF0000;
+          border-left-color:#FF0000;
+          border-right-color:#FF0000;
+          border-top-color:#FF0000;
+        }
+      "))
+    ),
+    fluidRow(
+      valueBoxOutput("avg_hp", width = 3),
+      valueBoxOutput("avg_attack", width = 3),
+      valueBoxOutput("avg_defense", width = 3),
+      valueBoxOutput("most_common_type", width = 3)
+    ),
+    fluidRow(
+      box(title = "Main Type", status = "primary", solidHeader = TRUE, width = 4,
+          plotlyOutput("main_type_plot", height = 300)),
+      box(title = "Average Attack vs. Defense by Pokemon Types", status = "primary", solidHeader = TRUE, width = 8,
+          plotlyOutput("attack_defense_plot", height = 300))
+    ),
+    fluidRow(
+      box(title = "Type 1 vs Type 2 Heatmap", status = "primary", solidHeader = TRUE, width = 6,
+          plotlyOutput("type_heatmap")),
+      box(title = "HP Distribution by Type 1", status = "primary", solidHeader = TRUE, width = 6,
+          plotlyOutput("hp_distribution_plot"))
+    ),
+  )
+)
+
+```
+
+Serwer:
+
+```{r}
+server = function(input, output, session) {
+  df = read_csv("Pokemon.csv")
+  
+  output$avg_hp = renderValueBox({
+    valueBox(
+      round(mean(df$HP, na.rm = TRUE), 2), 
+      "Average HP", 
+      icon = icon("heartbeat"), 
+      color = "red"
+    )
+  })
+  
+  output$avg_attack = renderValueBox({
+    valueBox(
+      round(mean(df$Attack, na.rm = TRUE), 2), 
+      "Average Attack", 
+      icon = icon("bolt"), 
+      color = "yellow"
+    )
+  })
+  
+  output$avg_defense = renderValueBox({
+    valueBox(
+      round(mean(df$Defense, na.rm = TRUE), 2), 
+      "Average Defense", 
+      icon = icon("shield-alt"), 
+      color = "red"
+    )
+  })
+  
+  output$most_common_type = renderValueBox({
+    most_common_type = df %>%
+      count(`Type 1`, sort = TRUE) %>%
+      top_n(1, n) %>%
+      pull(`Type 1`)
+    valueBox(
+      most_common_type, 
+      "Most Common Type", 
+      icon = icon("tag"), 
+      color = "yellow"
+    )
+  })
+  
+  output$main_type_plot = renderPlotly({
+    plot_ly(df, labels = ~`Type 1`, values = ~Total, type = 'pie', hole = 0.4) %>%
+      layout(title = "Main Pokemon Types")
+  })
+  
+  output$attack_defense_plot = renderPlotly({
+    avg_values = df %>%
+      group_by(`Type 1`) %>%
+      summarise(Average_Attack = mean(Attack, na.rm = TRUE),
+                Average_Defense = mean(Defense, na.rm = TRUE)) %>%
+      arrange(`Type 1`)
+    
+    attack_defense_plot = plot_ly(avg_values, x = ~`Type 1`, y = ~Average_Attack, type = 'bar', name = 'Average Attack', marker = list(color = 'rgba(222,45,38,0.8)')) %>%
+      add_trace(y = ~Average_Defense, name = 'Average Defense', marker = list(color = 'rgba(251,106,74,0.8)')) %>%
+      layout(barmode = 'group', yaxis = list(title = 'Average Values'), xaxis = list(title = 'Type 1'), 
+             title = "Average Attack vs. Defense by Pokemon Types",
+             legend = list(x = 0, y = -0.2)) 
+    
+    attack_defense_plot
+  })
+    
+  output$type_heatmap = renderPlotly({
+    heatmap_df = df %>% group_by(`Type 1`, `Type 2`) %>% summarise(Count = n())
+    plot_ly(heatmap_df, x = ~`Type 1`, y = ~`Type 2`, z = ~Count, type = 'heatmap', colors = colorRamp(c("#FFB868", "#FF0000"))) %>%
+      layout(title = "Pokemon Types Heatmap")
+    
+    
+  })
+  
+    
+  output$hp_distribution_plot = renderPlotly({
+    plot_ly(df, x = ~`Type 1`, y = ~HP, type = 'box', color = ~`Type 1`) %>%
+      layout(yaxis = list(title = 'HP'), xaxis = list(title = 'Type 1'), title = "HP Distribution by Type 1")
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+```
