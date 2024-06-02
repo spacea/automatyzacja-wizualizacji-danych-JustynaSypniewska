@@ -1,5 +1,5 @@
 # Projekt Dashboard Pokemon
-**Autor:** [Justyna Sypniewska]
+**Autor:** Justyna Sypniewska
 
 ## Opis Projektu
 Projekt ten to interaktywna tablica rozdzielcza stworzona w Shiny, która przedstawia różne wizualizacje i statystyki dotyczące Pokemonów. Główne funkcje projektu obejmują:
