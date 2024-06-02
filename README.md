@@ -1,13 +1,13 @@
 # Projekt Dashboard Pokemon
 **Autor:** Justyna Sypniewska
 
-## Opis Projektu
+## Opis projektu
 Projekt ten to dashboard stworzony w Shiny, który przedstawia różne wizualizacje i statystyki dotyczące Pokemonów. Główne funkcje projektu obejmują:
 - Wyświetlanie średnich wartości punktów życia, ataku i obrony Pokemonów
 - Identyfikacja najczęściej występującego typu Pokemona
 - Wizualizacje typu Pokemonów, porównanie średnich wartości ataku i obrony, oraz rozkład HP
 
-## Demo Wideo
+## Demo wideo
 Wideo prezentujące możliwości projektu na OneDrive: [Projekt Dashboard Pokemon](https://uam-my.sharepoint.com/:v:/r/personal/jussyp1_st_amu_edu_pl/Documents/ProjektDashboard/2024-06-02%2002-44-45.mkv?csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=EWBb8v)
 
 ## Funkcje 
@@ -26,7 +26,7 @@ Wideo prezentujące możliwości projektu na OneDrive: [Projekt Dashboard Pokemo
 - **plotly** - tworzenie interaktywnych wykresów
 - **readr** - importowanie i eksportowanie danych
 
-## Jak Uruchomić Projekt
+## Jak uruchomić projekt
 
 1. Zainstaluj wymagane pakiety R
 2. Pobierz lub sklonuj repozytorium projektu na swój komputer
