@@ -31,4 +31,4 @@ Projekt ten to dashboard stworzony w Shiny, który przedstawia różne wizualiza
 4. Uruchom aplikację Shiny
 5. Otwórz przeglądarkę internetową i przejdź pod adres wyświetlony w konsoli R
 
-Ostatnia aktualizacja: [02.06.2024]
+Ostatnia aktualizacja: [27.09.2024]
