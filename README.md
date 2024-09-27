@@ -7,9 +7,6 @@ Projekt ten to dashboard stworzony w Shiny, który przedstawia różne wizualiza
 - Identyfikacja najczęściej występującego typu Pokemona
 - Wizualizacje typu Pokemonów, porównanie średnich wartości ataku i obrony, oraz rozkład HP
 
-## Demo wideo
-Wideo prezentujące możliwości projektu na OneDrive: [Projekt Dashboard Pokemon](https://uam-my.sharepoint.com/:v:/r/personal/jussyp1_st_amu_edu_pl/Documents/ProjektDashboard/2024-06-02%2002-44-45.mkv?csf=1&web=1&e=Tm8UIg&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
-
 ## Funkcje 
 - **Średnie wartości** - prezentacja średnich wartości HP, Ataku i Obrony Pokemonów w formie intuicyjnych wskaźników
 - **Najczęstszy typ** - identyfikacja i prezentacja najczęściej występującego typu Pokemona
